@@ -19,8 +19,10 @@ function run() {
   // Only runs API if a date is selected
   if (month != '' && day != '' && year !=''){
 
-    let apiLink = `https://api.banidb.com/v2/hukamnamas/${year}/${month}/${day}`
-    console.log(apiLink);
+  let apiLink = `https://api.banidb.com/v2/hukamnamas/${year}/${month}/${day}`
+  console.log(apiLink);
+
+    return response;
 
     // Connect to the API, translate repsponse to JSON
     fetch(apiLink)
@@ -47,10 +49,19 @@ function run() {
           } // second for
       } // for
 
-    }) // fetch
+    }) // then fetch
 
 
   } else {
     console.log('Date not chosen');
   } // else
 } // run()
+
+
+/* To Do:
+
+- Error handling for no hukam (1/1/2019)
+- Prevent multiple queries from stacking
+- Styling hukamPrint
+
+*/
