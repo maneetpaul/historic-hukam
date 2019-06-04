@@ -8,6 +8,14 @@ function run() {
   // Verify vars are being set
   // console.log(month, day, year);
 
+  // Declare HTML Variables
+  const app = document.getElementById('root2')
+  // Creates a container for all the Gurbani divs to live inside
+  const container = document.createElement('div')
+  container.setAttribute('class','container')
+  // Puts the container inside the root div
+  app.appendChild(container)
+
   // Only runs API if a date is selected
   if (month != '' && day != '' && year !=''){
 
@@ -22,16 +30,27 @@ function run() {
       // log all the raw API data
       console.log(hukam);
 
-
       for (let i = 0; i < hukam.shabads.length; i++) {
-          console.log(hukam.shabads[i]);
+          for (let j = 0; j < hukam.shabads[i].verses.length; j++) {
 
-      }
+          // Testing
+          // console.log(hukam.shabads[i].verses[j].verse.unicode)
+
+            // Creates a div for each line with hukamPrint class
+            const hukamPrint = document.createElement('div')
+            hukamPrint.setAttribute('class', 'hukamPrint')
+            hukamPrint.textContent = hukam.shabads[i].verses[j].verse.unicode
+
+            // Put hukamPrint divs into the container
+             container.appendChild(hukamPrint)
+
+          } // second for
+      } // for
 
     }) // fetch
 
 
   } else {
     console.log('Date not chosen');
-  }
+  } // else
 } // run()
