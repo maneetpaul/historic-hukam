@@ -22,8 +22,6 @@ function run() {
   let apiLink = `https://api.banidb.com/v2/hukamnamas/${year}/${month}/${day}`
   console.log(apiLink);
 
-    return response;
-
     // Connect to the API, translate repsponse to JSON
     fetch(apiLink)
     .then(response => response.json())
