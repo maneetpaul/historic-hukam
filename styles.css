@@ -44,6 +44,7 @@ p {
 
 .sttmRedirectUrl {
   padding: 5px;
+  font-size: 3.5vw;
 }
 
 
@@ -65,5 +66,5 @@ p {
   text-align: center;
   font-family: GurbaniAkhar;
   font-size: 1.5em;
-  font-size: 3vw;
+  font-size: 3.5vw;
 }
