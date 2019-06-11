@@ -1,5 +1,8 @@
 function run() {
 
+  // Clear the Root2 Div of anything already inside it
+  document.getElementById("root2").innerHTML = "";
+
   // Translates dropdown inputs to JS variables
   let month = document.getElementById("monthOption").value;
   let day = document.getElementById("dayOption").value;
