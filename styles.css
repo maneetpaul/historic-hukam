@@ -11,6 +11,17 @@
 
 }
 
+.titleContainer h1{
+  font-size: 1.5em;
+  font-size: 8vw;
+  font-weight: 700;
+}
+
+.titleContainer p {
+  font-size: 1em;
+  font-size: 4vw;
+}
+
 .dropdownContainer{
   margin: auto;
   width: 50%;
@@ -53,5 +64,6 @@ p {
 .hukamPrint {
   text-align: center;
   font-family: GurbaniAkhar;
-  font-size: 2.5em;
+  font-size: 1.5em;
+  font-size: 5vw;
 }
