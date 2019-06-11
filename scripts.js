@@ -40,27 +40,42 @@ function run() {
     .then(response => response.json())
     .then(hukam => {
 
-      // log all the raw API data
-      console.log(hukam);
+    // log all the raw API data
+    console.log(hukam);
 
-      for (let i = 0; i < hukam.shabads.length; i++) {
-          for (let j = 0; j < hukam.shabads[i].verses.length; j++) {
+    // PRINT HUKAM
+    for (let i = 0; i < hukam.shabads.length; i++) {
+        for (let j = 0; j < hukam.shabads[i].verses.length; j++) {
 
-          // Testing
-          // console.log(hukam.shabads[i].verses[j].verse.unicode)
+        // Testing
+        // console.log(hukam.shabads[i].verses[j].verse.unicode)
 
-            // Creates a div for each line with hukamPrint class
-            const hukamPrint = document.createElement('div')
-            hukamPrint.setAttribute('class', 'hukamPrint')
-            hukamPrint.textContent = hukam.shabads[i].verses[j].verse.gurmukhi
+          // Creates a div for each line with hukamPrint class
+          const hukamPrint = document.createElement('div')
+          hukamPrint.setAttribute('class', 'hukamPrint')
+          hukamPrint.textContent = hukam.shabads[i].verses[j].verse.gurmukhi
 
-            // Put hukamPrint divs into the container
-             container.appendChild(hukamPrint)
+          // Put hukamPrint divs into the container
+          container.appendChild(hukamPrint)
 
-          } // second for
-      } // for
+        } // second for
+    } // for
 
-    }) // then fetch
+    // Link Hukam to STTM
+    let sttmShabadId = hukam.shabadIds[0]
+    const sttmRedirectContainer = document.createElement('div')
+    sttmRedirectContainer.setAttribute('class','sttmRedirectContainer')
+    container.appendChild(sttmRedirectContainer)
+
+    const sttmRedirectUrl = document.createElement('a')
+    sttmRedirectUrl.textContent = 'Open in SikhiToTheMax...'
+    sttmRedirectUrl.setAttribute("href",'https://www.sikhitothemax.org/shabad?id=' + sttmShabadId)
+    sttmRedirectUrl.setAttribute('target','_blank')
+    sttmRedirectUrl.setAttribute('class','sttmRedirectUrl')
+    sttmRedirectContainer.appendChild(sttmRedirectUrl)
+
+
+    }) // then hukam
 
   } else {
     console.log('Date not chosen');
