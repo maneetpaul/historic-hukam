@@ -1,7 +1,7 @@
 function run() {
 
-  // Clear the Root2 Div of anything already inside it
-  document.getElementById("root2").innerHTML = "";
+  // Clear the content-root Div of anything already inside it
+  document.getElementById("content-root").innerHTML = "";
 
   // Translates dropdown inputs to JS variables
   let month = document.getElementById("monthOption").value;
@@ -12,7 +12,7 @@ function run() {
   // console.log(month, day, year);
 
   // Declare HTML Variables
-  const app = document.getElementById('root2')
+  const app = document.getElementById('content-root')
   // Creates a container for all the Gurbani divs to live inside
   const container = document.createElement('div')
   container.setAttribute('class','container')
@@ -25,8 +25,18 @@ function run() {
   let apiLink = `https://api.banidb.com/v2/hukamnamas/${year}/${month}/${day}`
   console.log(apiLink);
 
+  // Error Handling function
+  function handleErrors(res) {
+    if (!res.ok) {
+        throw Error(`Hukam cannot be found. Error ${res.status}`);
+    } else {
+        return res
+        }
+    }
+
     // Connect to the API, translate repsponse to JSON
     fetch(apiLink)
+    .then(handleErrors)
     .then(response => response.json())
     .then(hukam => {
 
@@ -42,7 +52,7 @@ function run() {
             // Creates a div for each line with hukamPrint class
             const hukamPrint = document.createElement('div')
             hukamPrint.setAttribute('class', 'hukamPrint')
-            hukamPrint.textContent = hukam.shabads[i].verses[j].verse.unicode
+            hukamPrint.textContent = hukam.shabads[i].verses[j].verse.gurmukhi
 
             // Put hukamPrint divs into the container
              container.appendChild(hukamPrint)
@@ -51,7 +61,6 @@ function run() {
       } // for
 
     }) // then fetch
-
 
   } else {
     console.log('Date not chosen');
@@ -62,7 +71,6 @@ function run() {
 /* To Do:
 
 - Error handling for no hukam (1/1/2019)
-- Prevent multiple queries from stacking
 - Styling hukamPrint
 
 */
